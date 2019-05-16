@@ -2,5 +2,13 @@
   "extends": ["airbnb", "react-app"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-plugin-root-import": {
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "src/"
+      }
+    }
   }
 }
