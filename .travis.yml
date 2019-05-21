@@ -11,5 +11,8 @@ deploy:
   skip_cleanup: true
   domain: http://mv-virtual-wallet.surge.sh
   project: ./build/
-on:
-  branch: master
+env:
+  - REACT_APP_BUILD_ENV=prd
+branchs: 
+  only: 
+  - master
