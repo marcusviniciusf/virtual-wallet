@@ -1,10 +1,12 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
+import { breakpoints } from '~/styles';
 import styled, { css } from 'styled-components';
 
 type Props = {
   modalOpen: boolean,
   onClose: Function,
+  children?: React.Node,
 };
 
 const Overlay = styled.div`
@@ -13,7 +15,7 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  /* background-color: rgba(0, 0, 0, 0.7); */
   z-index: 10001;
   display: ${props => (props.isOpen ? 'block' : 'none')};
 `;
@@ -32,11 +34,21 @@ const Modal = styled.div`
 `;
 
 const ModalContent = styled.div`
+  position: relative;
+  /* min-width: 40rem;
+  max-width: 50rem; */
+  width: 50rem;
   padding: 2rem;
   border-radius: 3px;
+  box-shadow: var(--box-shadow);
   background-color: var(--color-white);
   transition: transform 0.3s cubic-bezier(0, 0, 0.25, 1) 0s,
     opacity 0.3s cubic-bezier(0, 0, 0.25, 1) 0s;
+  @media (max-width: ${breakpoints.small}) {
+    min-width: auto;
+    width: 100%;
+    padding: 1rem;
+  }
   ${props => (props.isOpen
     ? css`
           transform: translate3d(0, 0, 0);
@@ -52,17 +64,19 @@ const ModalContent = styled.div`
 `;
 
 const ModalComponent = (props: Props) => {
-  const { modalOpen, onClose } = props;
+  const { modalOpen, onClose, children } = props;
   return (
     <>
       <Modal isOpen={modalOpen}>
-        <ModalContent isOpen={modalOpen}>
-          <h1>olá</h1>
-        </ModalContent>
+        <ModalContent isOpen={modalOpen}>{children}</ModalContent>
         <Overlay isOpen={modalOpen} onClick={onClose} />
       </Modal>
     </>
   );
+};
+
+ModalComponent.defaultProps = {
+  children: null,
 };
 
 export default ModalComponent;

@@ -45,6 +45,9 @@ const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 62.5%;
+    @media(max-width:${breakpoints.small}) {
+      font-size: 50%;
+    }
   }
   body {
     font-family: 'Nunito Sans', sans-serif;

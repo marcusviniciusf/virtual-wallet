@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { colors, breakpoints } from '~/styles';
-import { Text, Heading2, SmallText } from '.';
+import { Text, Heading2, SmallText } from '~/components/';
 
 const Card = styled.div`
   display: flex;
@@ -24,6 +24,7 @@ const Card = styled.div`
 `;
 
 const CoinView = styled.div`
+  z-index: 2;
   display: flex;
   align-items: flex-end;
   margin-top: 0.5rem;
@@ -65,7 +66,7 @@ type Props = {
   color: string,
   value: string,
   name: string,
-  icon?: React.ComponentType<*>,
+  icon: React.Element<*>,
 };
 
 const Coin = (props: Props) => {
@@ -82,10 +83,6 @@ const Coin = (props: Props) => {
       <CoinImageView color={color}>{icon}</CoinImageView>
     </Card>
   );
-};
-
-Coin.defaultProps = {
-  icon: null,
 };
 
 export default Coin;

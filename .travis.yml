@@ -14,5 +14,7 @@ deploy:
 env:
   - REACT_APP_BUILD_ENV=prd
 branchs: 
+  except:
+  - dev
   only: 
   - master

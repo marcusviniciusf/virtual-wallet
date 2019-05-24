@@ -3,14 +3,6 @@ import axios from 'axios';
 // Configs
 import config from '~/config';
 
-const ApiCoins = async (): Promise<Object> => {
-  try {
-    const { data } = await axios.get(`${config.APIURL}/coins`);
-    return Promise.resolve(data);
-  } catch (error) {
-    console.log('error: ', error);
-    return Promise.reject(error);
-  }
-};
+const ApiCoins = (): Promise<Object> => axios.get(`${config.APIURL}/coins`);
 
 export { ApiCoins };

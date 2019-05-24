@@ -29,8 +29,19 @@ const Button = styled.a`
               background: var(--color-primary-dark);
             }
           `)};
+    ${({ disabled, outlined }) => disabled
+      && !outlined
+      && css`
+        cursor: not-allowed;
+        opacity: 0.3;
+      `}
   }
 `;
+
+Button.defaultProps = {
+  disabled: false,
+  outlined: false,
+};
 
 export const ButtonSecondary = styled.a`
   &,
