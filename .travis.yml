@@ -5,12 +5,16 @@ cache:
   directories:
     - node_modules
 script:
-  - yarn test
   - yarn build
 deploy:
   provider: surge
   skip_cleanup: true
   domain: http://mv-virtual-wallet.surge.sh
   project: ./build/
-on:
-  branch: master
+env:
+  - REACT_APP_BUILD_ENV=prd
+branchs: 
+  except:
+  - dev
+  only: 
+  - master
